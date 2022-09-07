@@ -1,0 +1,31 @@
+﻿<Window x:Class="ChildNodesSelector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:local="clr-namespace:ChildNodesSelector" 
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        Title="MainWindow" Height="350" Width="525">
+
+    <Grid>
+
+        <dxg:TreeViewControl x:Name="TRVIEW"
+                             ItemsSource="{Binding G}"
+                             TreeDerivationMode="ChildNodesSelector"
+                             ShowExpandButtons="True">
+            <dxg:TreeViewControl.NodeContentTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Row.Name}" Margin="10,0,0,0"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </dxg:TreeViewControl.NodeContentTemplate>
+            <dxg:TreeViewControl.ChildNodesSelector>
+                <local:CustomChildrenSelector/>
+            </dxg:TreeViewControl.ChildNodesSelector>
+        </dxg:TreeViewControl>
+
+        <!--<TreeView x:Name="TRVIEW" ItemsSource="{Binding G}"></TreeView>-->
+
+    </Grid>
+</Window>
